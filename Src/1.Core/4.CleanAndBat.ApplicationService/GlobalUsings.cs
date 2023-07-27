@@ -1,0 +1,15 @@
+﻿global using Bat.Core;
+global using Bat.Cache;
+global using CleanAndBat.Dto;
+global using FluentValidation;
+global using Bat.EntityFrameworkCore;
+global using CleanAndBat.Domain.Enums;
+global using Microsoft.AspNetCore.Http;
+global using CleanAndBat.Domain.Entities;
+global using Microsoft.EntityFrameworkCore;
+global using CleanAndBat.Persistence.UnitOfWork;
+global using CleanAndBat.ApplicationService.Resource;
+global using Microsoft.Extensions.DependencyInjection;
+global using CleanAndBat.Interface.BussinessInterface;
+global using CleanAndBat.ApplicationService.Implements;
+global using CleanAndBat.Interface.InfrastructureInterface;

@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <RootNamespace>CleanAndBat.Interface</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\1.CleanAndBat.Domain\1.CleanAndBat.Domain.csproj" />
+    <ProjectReference Include="..\2.CleanAndBat.Dto\2.CleanAndBat.Dto.csproj" />
+  </ItemGroup>
+
+</Project>

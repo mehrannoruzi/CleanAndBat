@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <RootNamespace>CleanAndBat.ApplicationService</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Bat.Cache" Version="7.0.0" />
+    <PackageReference Include="Bat.Http" Version="7.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\2.Infrastructure\5.CleanAndBat.Persistence\5.CleanAndBat.Persistence.csproj" />
+    <ProjectReference Include="..\..\2.Infrastructure\6.CleanAndBat.Infrastructure\6.CleanAndBat.Infrastructure.csproj" />
+    <ProjectReference Include="..\3.CleanAndBat.Interface\3.CleanAndBat.Interface.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Resource\ServiceMessages.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ServiceMessages.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resource\ServiceMessages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ServiceMessages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

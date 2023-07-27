@@ -1,0 +1,13 @@
+﻿global using Bat.Core;
+global using Bat.EntityFrameworkCore;
+global using CleanAndBat.Domain.Entities;
+global using Bat.EntityFrameworkCore.Tools;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.Extensions.Configuration;
+global using CleanAndBat.Persistence.Repository;
+global using CleanAndBat.Persistence.UnitOfWork;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.EntityFrameworkCore.ChangeTracking;
+global using Microsoft.EntityFrameworkCore.Infrastructure;
+global using CleanAndBat.Persistence.EntityConfigurations;
+global using Microsoft.EntityFrameworkCore.Metadata.Builders;
