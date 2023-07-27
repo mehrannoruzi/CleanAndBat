@@ -19,17 +19,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "0.CleanAndBat.CrossCutting"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "1.CleanAndBat.Domain", "Src\1.Core\1.CleanAndBat.Domain\1.CleanAndBat.Domain.csproj", "{D84EB40C-02ED-4A61-AA9F-B80832AC153A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2.CleanAndBat.Dto", "Src\1.Core\2.CleanAndBat.Dto\2.CleanAndBat.Dto.csproj", "{BA4ED864-A965-45C0-A711-8BBDF31CCFEA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "2.CleanAndBat.Dto", "Src\1.Core\2.CleanAndBat.Dto\2.CleanAndBat.Dto.csproj", "{BA4ED864-A965-45C0-A711-8BBDF31CCFEA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3.CleanAndBat.Interface", "Src\1.Core\3.CleanAndBat.Interface\3.CleanAndBat.Interface.csproj", "{7ABAC06B-2837-47CB-9040-9E651D53F568}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "3.CleanAndBat.Interface", "Src\1.Core\3.CleanAndBat.Interface\3.CleanAndBat.Interface.csproj", "{7ABAC06B-2837-47CB-9040-9E651D53F568}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4.CleanAndBat.ApplicationService", "Src\1.Core\4.CleanAndBat.ApplicationService\4.CleanAndBat.ApplicationService.csproj", "{B62D8D87-E9CC-4884-B152-E40E38E9977B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "4.CleanAndBat.ApplicationService", "Src\1.Core\4.CleanAndBat.ApplicationService\4.CleanAndBat.ApplicationService.csproj", "{B62D8D87-E9CC-4884-B152-E40E38E9977B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5.CleanAndBat.Persistence", "Src\2.Infrastructure\5.CleanAndBat.Persistence\5.CleanAndBat.Persistence.csproj", "{9ADEA9E6-D439-42ED-BE45-10FF724142C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "5.CleanAndBat.Persistence", "Src\2.Infrastructure\5.CleanAndBat.Persistence\5.CleanAndBat.Persistence.csproj", "{9ADEA9E6-D439-42ED-BE45-10FF724142C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6.CleanAndBat.Infrastructure", "Src\2.Infrastructure\6.CleanAndBat.Infrastructure\6.CleanAndBat.Infrastructure.csproj", "{A0D1F090-0FCF-4480-B5DD-AF7C47335205}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "6.CleanAndBat.Infrastructure", "Src\2.Infrastructure\6.CleanAndBat.Infrastructure\6.CleanAndBat.Infrastructure.csproj", "{A0D1F090-0FCF-4480-B5DD-AF7C47335205}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "7.CleanAndBat.Api", "Src\3.Presentation\7.CleanAndBat.Api\7.CleanAndBat.Api.csproj", "{EAD513C7-D39A-483D-9C08-E89839FB22EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanAndBat.XUnitTest", "Test\CleanAndBat.XUnitTest\CleanAndBat.XUnitTest.csproj", "{02F5190B-0EEB-4064-9CD3-D244AD7F1D8D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{EAD513C7-D39A-483D-9C08-E89839FB22EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EAD513C7-D39A-483D-9C08-E89839FB22EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EAD513C7-D39A-483D-9C08-E89839FB22EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02F5190B-0EEB-4064-9CD3-D244AD7F1D8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02F5190B-0EEB-4064-9CD3-D244AD7F1D8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02F5190B-0EEB-4064-9CD3-D244AD7F1D8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02F5190B-0EEB-4064-9CD3-D244AD7F1D8D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -86,6 +92,7 @@ Global
 		{9ADEA9E6-D439-42ED-BE45-10FF724142C7} = {B0C69BF7-9881-4E99-AD79-DEB1DFB50F91}
 		{A0D1F090-0FCF-4480-B5DD-AF7C47335205} = {B0C69BF7-9881-4E99-AD79-DEB1DFB50F91}
 		{EAD513C7-D39A-483D-9C08-E89839FB22EF} = {B02220E0-C946-4287-8DCA-DAC6B348ECFC}
+		{02F5190B-0EEB-4064-9CD3-D244AD7F1D8D} = {DCA434FD-D148-49E9-A57F-7A7E4A9ACDD8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {307D39EC-E06E-4632-94B6-4AB1698D79CD}
