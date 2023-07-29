@@ -7,6 +7,7 @@ global using Bat.AspNetCore;
 global using System.Reflection;
 global using Microsoft.OpenApi.Models;
 global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.Extensions.Options;
 global using Microsoft.AspNetCore.Mvc.Filters;
 global using Swashbuckle.AspNetCore.SwaggerGen;
 global using Microsoft.AspNetCore.Authorization;

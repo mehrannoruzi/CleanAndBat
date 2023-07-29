@@ -27,7 +27,6 @@ builder.Services.AddCors(options =>
 	});
 });
 
-
 builder.Services.AddControllers(options =>
 {
 	options.EnableEndpointRouting = false;
@@ -92,7 +91,6 @@ if (app.Environment.IsDevelopment())
 {
 	app.UseSwagger();
 	app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CleanAndBat.Api v1"));
-
 }
 
 app.UseHsts();
@@ -105,9 +103,9 @@ app.UseRouting();
 
 app.UseCors(allowedOrigins);
 
-//app.UseMiddleware<JwtParserMiddleware>();
+app.UseMiddleware<JwtParserMiddleware>();
 
-//app.UseMiddleware<BatEnableRequestBufferingMiddleware>();
+app.UseMiddleware<BatEnableRequestBufferingMiddleware>();
 
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 
