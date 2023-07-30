@@ -41,11 +41,14 @@ builder.Services.AddControllers(options =>
 	options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
 });
 
+builder.Services.Configure<JwtSettings>(configuration.GetSection("JwtSettings"));
+builder.Services.AddTransient<IJwtService, JwtService>();
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(option =>
 {
 	option.SwaggerDoc("v1", new OpenApiInfo { Title = "CleanAndBat.Api", Version = "v1" });
-	//option.OperationFilter<SwaggerAuthenticateFilter>();
+	option.OperationFilter<SwaggerAuthenticateFilter>();
 	option.OperationFilter<SwaggerAuthorizeFilter>();
 	option.SchemaFilter<SwaggerExcludeFilter>();
 
