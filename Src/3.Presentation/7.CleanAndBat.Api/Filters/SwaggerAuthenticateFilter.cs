@@ -1,6 +1,4 @@
-﻿using Microsoft.OpenApi.Any;
-
-namespace CleanAndBat.Api.Filters;
+﻿namespace CleanAndBat.Api.Filters;
 
 public class SwaggerAuthenticateFilter : IOperationFilter
 {

@@ -5,6 +5,7 @@ global using System.Net;
 global using System.Text;
 global using Bat.AspNetCore;
 global using System.Reflection;
+global using Microsoft.OpenApi.Any;
 global using Microsoft.OpenApi.Models;
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.Extensions.Options;
