@@ -13,6 +13,8 @@ public static class ConfigureServices
 		#endregion
 
 
+		serviceCollection.AddValidatorsFromAssemblyContaining<RegisterUserDtoValidator>();
+
 		serviceCollection.AddSingleton<IMemoryCacheProvider, MemoryCacheProvider>();
 
 		return serviceCollection;
