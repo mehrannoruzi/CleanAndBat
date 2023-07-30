@@ -5,6 +5,7 @@ using CleanAndBat.Api.Filters;
 using CleanAndBat.Persistence;
 using CleanAndBat.Infrastructure;
 using CleanAndBat.Api.Middlewares;
+using FluentValidation.AspNetCore;
 using CleanAndBat.ApplicationService;
 using System.Text.Json.Serialization;
 using DryIoc.Microsoft.DependencyInjection;
@@ -42,6 +43,8 @@ builder.Services.AddControllers(options =>
 	options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
 	options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
 });
+
+builder.Services.AddFluentValidationAutoValidation();
 
 builder.Services.Configure<JwtSettings>(configuration.GetSection("JwtSettings"));
 builder.Services.AddTransient<IJwtService, JwtService>();

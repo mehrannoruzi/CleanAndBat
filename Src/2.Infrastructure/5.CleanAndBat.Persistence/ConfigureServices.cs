@@ -6,10 +6,12 @@ public static class ConfigureServices
 	{
 		serviceCollection.AddTransient(typeof(IGenericRepo<>), typeof(GenericRepo<>));
 
-		serviceCollection.AddContext<AppDbContext>(configuration.GetConnectionString("AppDbContext"));
-
 		serviceCollection.AddScoped<AppUnitOfWork>();
 		serviceCollection.AddScoped<IBatUnitOfWork, AppUnitOfWork>();
+
+		var appConnectionString = configuration.GetConnectionString("AppDbContext");
+		if (appConnectionString is not null)
+			serviceCollection.AddContext<AppDbContext>(appConnectionString);
 
 		return serviceCollection;
 	}

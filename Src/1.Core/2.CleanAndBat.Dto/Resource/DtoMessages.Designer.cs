@@ -106,6 +106,15 @@ namespace CleanAndBat.Dto.Resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to نام کاربری یا کلمه عبور اشتباه می باشد..
+        /// </summary>
+        internal static string InvalidUsernameOrPassword {
+            get {
+                return ResourceManager.GetString("InvalidUsernameOrPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to طول پین کد ارسالی نباید کوچکتر از 4 کاراکتر باشد..
         /// </summary>
         internal static string PinCodeLenth {

@@ -28,7 +28,7 @@ public class JwtParserMiddleware
             {
                 if (context.User.Claims.Any())
                 {
-                    context.Response.StatusCode = (int)System.Net.HttpStatusCode.Unauthorized;
+                    context.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
                     context.Response.ContentType = "application/Json";
                     var bytes = Encoding.ASCII.GetBytes(new { isSuccessful = false, message = "UnAuthorized Access To Api !. Token Not Sent.", resultCode = 401 }.SerializeToJson());
                     await context.Response.Body.WriteAsync(bytes);
@@ -65,7 +65,7 @@ public class JwtParserMiddleware
                 #endregion
             }
 
-            context.Response.StatusCode = (int)System.Net.HttpStatusCode.Unauthorized;
+			context.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
             context.Response.ContentType = "application/Json";
             await context.Response.Body.WriteAsync(bytes);
         }

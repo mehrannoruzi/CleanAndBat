@@ -4,23 +4,24 @@ public class UserService : IUserService
 {
 	private readonly AppUnitOfWork _appUow;
 	private readonly Lazy<IOtpService> _otpService;
-	private readonly IValidator<RegisterUserDto> _validator;
-	//private readonly Lazy<ISmsGatwayAdapter> _smsGatwayAdapter;
+	private readonly Lazy<IMemoryCacheProvider> _cacheProvider;
+	private readonly Lazy<IValidator<RegisterUserDto>> _registerUserDtoValidator;
 
-	public UserService(AppUnitOfWork appUow, IValidator<RegisterUserDto> validator,
+	public UserService(AppUnitOfWork appUow, Lazy<IMemoryCacheProvider> cacheProvider,
+		Lazy<IValidator<RegisterUserDto>> registerUserDtoValidator,
 		Lazy<IOtpService> otpService)
 	{
 		_appUow = appUow;
-		_validator = validator;
 		_otpService = otpService;
-		//_smsGatwayAdapter = smsGatwayAdapter;
+		_cacheProvider = cacheProvider;
+		_registerUserDtoValidator = registerUserDtoValidator;
 	}
 
 
 	public async Task<Response<int>> Register(RegisterUserDto registerUserDto, HttpContext httpContext, CancellationToken cancellationToken = default)
 	{
 		#region Validate Request
-		var validationResult = await _validator.ValidateAsync(registerUserDto, cancellationToken);
+		var validationResult = await _registerUserDtoValidator.Value.ValidateAsync(registerUserDto, cancellationToken);
 		if (!validationResult.IsValid)
 			return Response<int>.Error(validationResult.GetValidationErrors());
 		#endregion
@@ -92,6 +93,19 @@ public class UserService : IUserService
 			await dbTrans.RollbackAsync(cancellationToken);
 			throw;
 		}
+	}
+
+	public async Task<IEnumerable<MenuModel>> GetAvailableMenus(int userId, RoleType roleType = RoleType.User)
+	{
+		var userMenu = (IEnumerable<MenuModel>)_cacheProvider.Value.Get(GlobalVariables.CacheSettings.MenuKey(userId));
+		if (userMenu.IsNotNull() && userMenu.Any()) return userMenu;
+
+		userMenu = await _appUow.ExecuteProcedure<MenuModel>("EXEC [Auth].[GetUserMenu] @UserId, @Type"
+			, new SqlParameter("@UserId", userId)
+			, new SqlParameter("@Type", roleType));
+
+		_cacheProvider.Value.Add(GlobalVariables.CacheSettings.MenuKey(userId), userMenu, GlobalVariables.CacheSettings.MenuTimeout());
+		return userMenu;
 	}
 
 	public async Task<IResponse<object?>> GetProfile(int userId, CancellationToken cancellationToken = default)

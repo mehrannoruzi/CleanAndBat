@@ -1,4 +1,6 @@
-﻿namespace CleanAndBat.ApplicationService;
+﻿using FluentValidation.AspNetCore;
+
+namespace CleanAndBat.ApplicationService;
 
 public static class ConfigureServices
 {
@@ -13,6 +15,7 @@ public static class ConfigureServices
 		#endregion
 
 
+		serviceCollection.AddFluentValidationAutoValidation();
 		serviceCollection.AddValidatorsFromAssemblyContaining<RegisterUserDtoValidator>();
 
 		serviceCollection.AddSingleton<IMemoryCacheProvider, MemoryCacheProvider>();

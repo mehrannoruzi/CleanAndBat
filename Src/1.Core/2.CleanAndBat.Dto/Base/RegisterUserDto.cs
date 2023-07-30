@@ -1,6 +1,6 @@
 ﻿namespace CleanAndBat.Dto;
 
-public class RegisterUserDto
+public record RegisterUserDto
 {
 	public long MobileNumber { get; set; }
 	public required string FirstName { get; set; }

@@ -1,6 +1,6 @@
 ﻿namespace CleanAndBat.Dto;
 
-public class FilterUserDto
+public record FilterUserDto
 {
 	public string? FirstName { get; set; }
 	public string? LastName { get; set; }

@@ -1,4 +1,5 @@
-﻿global using FluentValidation;
+﻿global using Bat.Core;
+global using FluentValidation;
 global using System.ComponentModel;
 global using CleanAndBat.Domain.Enums;
 global using FluentValidation.Results;

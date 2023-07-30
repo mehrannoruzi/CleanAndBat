@@ -1,5 +1,6 @@
 ﻿namespace CleanAndBat.Api.Controllers;
 
+[AuthorizeFilter]
 [Route("[controller]/[action]")]
 public class UserController : Controller
 {
@@ -12,15 +13,15 @@ public class UserController : Controller
 
 
 	[HttpPost]
-	public async Task<JsonResult> Register(RegisterUserDto registerUserDto, CancellationToken cancellationToken)
+	public async Task<JsonResult> Register([FromBody] RegisterUserDto registerUserDto, CancellationToken cancellationToken)
 		=> Json(await _userService.Register(registerUserDto, HttpContext, cancellationToken));
 
 	[HttpGet]
-	public async Task<JsonResult> GetProfile(int userId, CancellationToken cancellationToken)
-		=> Json(await _userService.GetProfile(userId, cancellationToken));
+	public async Task<JsonResult> GetProfile([FromHeader] UserDto userDto, CancellationToken cancellationToken)
+		=> Json(await _userService.GetProfile(userDto.UserId, cancellationToken));
 
 	[HttpGet]
-	public async Task<JsonResult> Filter(FilterUserDto filterUserDto, PagingParameter pagingParameter, CancellationToken cancellationToken)
+	public async Task<JsonResult> Filter([FromQuery] FilterUserDto filterUserDto, PagingParameter pagingParameter, CancellationToken cancellationToken)
 		=> Json(await _userService.Filter(filterUserDto, pagingParameter, cancellationToken));
 
 }

@@ -132,6 +132,9 @@
   <data name="InvalidUserId" xml:space="preserve">
     <value>شناسه کاربر معتبر نمی باشد.</value>
   </data>
+  <data name="InvalidUsernameOrPassword" xml:space="preserve">
+    <value>نام کاربری یا کلمه عبور اشتباه می باشد.</value>
+  </data>
   <data name="PinCodeLenth" xml:space="preserve">
     <value>طول پین کد ارسالی نباید کوچکتر از 4 کاراکتر باشد.</value>
   </data>

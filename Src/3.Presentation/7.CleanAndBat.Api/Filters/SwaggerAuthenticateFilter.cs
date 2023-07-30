@@ -18,7 +18,7 @@ public class SwaggerAuthenticateFilter : IOperationFilter
 					Schema = new OpenApiSchema
 					{
 						Type = "string",
-						Default = new OpenApiString("672F2DD8-52FA-499F-1366-D556D9C25AF5")
+						Default = new OpenApiString("10FA579F-B9D5-4E4A-863E-6215DC2CD31E")
 					},
 					Description = "Header Token For Authenticate Request.",
 				});
