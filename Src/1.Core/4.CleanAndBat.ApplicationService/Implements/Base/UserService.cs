@@ -5,15 +5,15 @@ public class UserService : IUserService
 	private readonly AppUnitOfWork _appUow;
 	private readonly Lazy<IOtpService> _otpService;
 	private readonly IValidator<RegisterUserDto> _validator;
-	private readonly Lazy<ISmsGatwayAdapter> _smsGatwayAdapter;
+	//private readonly Lazy<ISmsGatwayAdapter> _smsGatwayAdapter;
 
 	public UserService(AppUnitOfWork appUow, IValidator<RegisterUserDto> validator,
-		Lazy<IOtpService> otpService, Lazy<ISmsGatwayAdapter> smsGatwayAdapter)
+		Lazy<IOtpService> otpService)
 	{
 		_appUow = appUow;
 		_validator = validator;
 		_otpService = otpService;
-		_smsGatwayAdapter = smsGatwayAdapter;
+		//_smsGatwayAdapter = smsGatwayAdapter;
 	}
 
 
@@ -25,7 +25,7 @@ public class UserService : IUserService
 			return Response<int>.Error(validationResult.GetValidationErrors());
 		#endregion
 
-		var dbTrans = await _appUow.Database.BeginTransactionAsync();
+		var dbTrans = await _appUow.Database.BeginTransactionAsync(cancellationToken);
 		try
 		{
 			#region Add User
@@ -39,7 +39,7 @@ public class UserService : IUserService
 
 			user.MobileNumber = registerUserDto.MobileNumber;
 			user.Email = registerUserDto.Email;
-			await _appUow.UserRepo.AddAsync(user);
+			_appUow.UserRepo.Add(user);
 			var addUserResult = await _appUow.BatSaveChangesAsync(cancellationToken);
 			if (!addUserResult.IsSuccess && addUserResult.ResultType == SaveChangeResultType.DuplicateIndexKeyException)
 				return new Response<int>(ServiceMessages.RegisteredUserExist);
@@ -75,7 +75,7 @@ public class UserService : IUserService
 			var SendRegisterCodeResult = await _otpService.Value.SendCode(sendOtpDto, cancellationToken);
 			if (SendRegisterCodeResult.IsSuccess is false)
 			{
-				await dbTrans.RollbackAsync();
+				await dbTrans.RollbackAsync(cancellationToken);
 				return Response<int>.Error(ServiceMessages.Error);
 			}
 
@@ -94,7 +94,7 @@ public class UserService : IUserService
 		}
 	}
 
-	public async Task<IResponse<object>> GetProfile(int userId, CancellationToken cancellationToken = default)
+	public async Task<IResponse<object?>> GetProfile(int userId, CancellationToken cancellationToken = default)
 	{
 		var userProfile = await _appUow.UserRepo
 			.AsNoTracking()
@@ -111,10 +111,10 @@ public class UserService : IUserService
 			})
 			.FirstOrDefaultAsync(cancellationToken);
 
-		return Response<object>.Success(userProfile, ServiceMessages.Success);
+		return Response<object?>.Success(userProfile, ServiceMessages.Success);
 	}
 
-	public async Task<IResponse<object>> Filter(FilterUserDto filterUserDto, PagingParameter pagingParameter, CancellationToken cancellationToken = default)
+	public async Task<IResponse<object?>> Filter(FilterUserDto filterUserDto, PagingParameter pagingParameter, CancellationToken cancellationToken = default)
 	{
 		var userList = await _appUow.UserRepo
 			.AsNoTracking()
@@ -133,6 +133,6 @@ public class UserService : IUserService
 			})
 			.ToPagingListDetailsAsync(pagingParameter, cancellationToken);
 
-		return Response<object>.Success(userList, ServiceMessages.Success);
+		return Response<object?>.Success(userList, ServiceMessages.Success);
 	}
 }

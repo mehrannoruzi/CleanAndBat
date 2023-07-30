@@ -9,8 +9,7 @@ public class SwaggerAuthenticateFilter : IOperationFilter
 			if (!context.ApiDescription.CustomAttributes().Any((a) => a is AllowAnonymousAttribute)
 				&& descriptor.ControllerTypeInfo.GetCustomAttribute<AuthenticateFilter>() != null)
 			{
-				if (operation.Parameters == null) operation.Parameters = new List<OpenApiParameter>();
-
+				operation.Parameters ??= new List<OpenApiParameter>();
 				operation.Parameters.Add(new OpenApiParameter
 				{
 					Name = "Token",

@@ -18,12 +18,14 @@ builder.Services.AddCors(options =>
 {
 	options.AddPolicy(allowedOrigins, builder =>
 	{
-		builder.WithOrigins(configuration.GetSection("AllowedOrigin").Value.Split(";"))
-			   .SetIsOriginAllowedToAllowWildcardSubdomains()
-			   .AllowAnyHeader()
-			   .AllowAnyMethod()
-			   .AllowCredentials()
-			   .WithExposedHeaders("");
+		var validOrigins = configuration.GetSection("AllowedOrigin").Value;
+		if (validOrigins is not null)
+			builder.WithOrigins(validOrigins.Split(";"))
+				   .SetIsOriginAllowedToAllowWildcardSubdomains()
+				   .AllowAnyHeader()
+				   .AllowAnyMethod()
+				   .AllowCredentials()
+				   .WithExposedHeaders("");
 	});
 });
 
